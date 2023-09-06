@@ -8,7 +8,7 @@ pipeline {
             steps {
                 
                 git branch: 'main',
-                url: 'https://github.com/VardhanLearn/jenkins-maven-sonarqube.git'
+                url: 'https://github.com/manoranjanmajumdar001/day1.git'
                 
             }
         }  
