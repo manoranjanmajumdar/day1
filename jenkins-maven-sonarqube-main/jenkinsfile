@@ -20,43 +20,7 @@ pipeline {
                 sh 'mvn clean package'   
              }
         }
-             
-             
-	    stage ('sonar') {
-	        
-	        steps {
-	            
-	            withSonarQubeEnv ('sonar') {
-	             
-	             sh 'mvn sonar:sonar' 
-	             
-	            }
-	        }
-	    }
-	    stage ('Upload jar file to nexus'){
-	        
-	        steps{
-	            
-	            nexusArtifactUploader artifacts: [
-	                [
-	                    artifactId: 'java-web-app', 
-	                    classifier: '',
-	                    file: 'target/java-web-app-3.3.0.jar',
-	                    type: 'jar'
-	               ]
-	           ],
-	           credentialsId: 'nexus-credentials',
-	           groupId: 'com.example',
-	           nexusUrl: '13.233.140.139:8081',
-	           nexusVersion: 'nexus3',
-	           protocol: 'http',
-	           repository: 'Vardhan-app',
-	           version: '3.3.0'
-	        }
-	        
-	    }
-	    
-    }    
+                
              post {
 	          success {
 	              echo 'Now Archiving it'
